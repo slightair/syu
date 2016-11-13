@@ -11,6 +11,8 @@
 		571E4F101DD6CA5100CFDEC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E4F0F1DD6CA5100CFDEC6 /* ViewController.swift */; };
 		571E4F121DD6CA5100CFDEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 571E4F111DD6CA5100CFDEC6 /* Assets.xcassets */; };
 		571E4F151DD6CA5100CFDEC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571E4F131DD6CA5100CFDEC6 /* Main.storyboard */; };
+		57FD0C511DD85828002CDAC4 /* APIDocumentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD0C501DD85828002CDAC4 /* APIDocumentation.swift */; };
+		57FD0C531DD85C1F002CDAC4 /* Xcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FD0C521DD85C1F002CDAC4 /* Xcode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		571E4F111DD6CA5100CFDEC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		571E4F141DD6CA5100CFDEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		571E4F161DD6CA5100CFDEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		57FD0C501DD85828002CDAC4 /* APIDocumentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDocumentation.swift; sourceTree = "<group>"; };
+		57FD0C521DD85C1F002CDAC4 /* Xcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xcode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 				571E4F111DD6CA5100CFDEC6 /* Assets.xcassets */,
 				571E4F131DD6CA5100CFDEC6 /* Main.storyboard */,
 				571E4F161DD6CA5100CFDEC6 /* Info.plist */,
+				57FD0C501DD85828002CDAC4 /* APIDocumentation.swift */,
+				57FD0C521DD85C1F002CDAC4 /* Xcode.swift */,
 			);
 			path = Syu;
 			sourceTree = "<group>";
@@ -133,6 +139,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				571E4F101DD6CA5100CFDEC6 /* ViewController.swift in Sources */,
+				57FD0C531DD85C1F002CDAC4 /* Xcode.swift in Sources */,
+				57FD0C511DD85828002CDAC4 /* APIDocumentation.swift in Sources */,
 				571E4F0E1DD6CA5100CFDEC6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +294,7 @@
 				571E4F1B1DD6CA5100CFDEC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
