@@ -1,5 +1,6 @@
 import Foundation
 import SQLite
+import Compression
 
 class APIDocumentation {
     let resourcesPath: URL
@@ -71,8 +72,22 @@ class APIDocumentation {
 
             print("key: \(record[requestKey]), uncompressedSize: \(record[uncompressedSize])")
 
-            let dataString = String(data: data, encoding: String.Encoding.ascii)
-            print(dataString)
+            if let dataString = String(data: decode(from: data), encoding: String.Encoding.ascii) {
+                print(dataString)
+            }
         }
+    }
+
+    private func decode(from encodedData: Data) -> Data {
+        let result = encodedData.withUnsafeBytes { (sourceBuffer: UnsafePointer<UInt8>) -> Data in
+            let sourceBufferSize = encodedData.count
+            let destBufferSize = 1048576
+            let destBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: destBufferSize)
+            let size = compression_decode_buffer(destBuffer, destBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_LZFSE)
+
+            return Data(bytesNoCopy: destBuffer, count: size, deallocator: .free)
+        }
+
+        return result
     }
 }
