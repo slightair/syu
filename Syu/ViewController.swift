@@ -10,5 +10,7 @@ class ViewController: NSViewController {
             return
         }
         print(doc.resourcesPath)
+
+        doc.test()
     }
 }
