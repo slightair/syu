@@ -1,1 +1,2 @@
+github "ReactiveX/RxSwift" "3.0.1"
 github "stephencelis/SQLite.swift" "0.11.0"
