@@ -1,6 +1,7 @@
 import Foundation
-import SQLite
 import Compression
+import SQLite
+import RxSwift
 
 class APIDocumentation {
     let resourcesPath: URL
@@ -35,46 +36,24 @@ class APIDocumentation {
         cacheDB = try? Connection(cacheDBPath.absoluteString, readonly: true)
     }
 
-    func test() {
-        let requestKeys = testMapDB()
-        testCacheDB(requestKeys: requestKeys)
-    }
+    func searchContents(keyword: String) -> Observable<[Content]> {
+        let query = Table("map").select(Content.Column.requestKey, Content.Column.topicID, Content.Column.referencePath)
+            .filter(Content.Column.referencePath.glob("\(keyword)*"))
+            .limit(30)
 
-    private func testMapDB() -> [String] {
-        let map = Table("map")
-        let requestKey = Expression<String>("request_key")
-        let topicID = Expression<Int64>("topic_id")
-        let referencePath = Expression<String>("reference_path")
-
-        let query = map.select(requestKey, topicID, referencePath)
-            .filter(referencePath.glob("uikit/uiviewcontroller*"))
-            .limit(10)
-
-        var requestKeys: [String] = []
-        for record in try! mapDB.prepare(query) {
-            print("key: \(record[requestKey]), topic: \(record[topicID]), path: \(record[referencePath])")
-            requestKeys.append(record[requestKey])
-        }
-        return requestKeys
-    }
-
-    private func testCacheDB(requestKeys: [String]) {
-        let response = Table("response")
-        let requestKey = Expression<String>("request_key")
-        let uncompressedSize = Expression<Int64>("uncompressed_size")
-        let responseData = Expression<SQLite.Blob>("response_data")
-
-        let query = response.select(requestKey, uncompressedSize, responseData)
-                            .filter(requestKeys.contains(requestKey))
-
-        for record in try! cacheDB.prepare(query) {
-            let data = Data(bytes: record[responseData].bytes)
-
-            print("key: \(record[requestKey]), uncompressedSize: \(record[uncompressedSize])")
-
-            if let dataString = String(data: decode(from: data), encoding: String.Encoding.ascii) {
-                print(dataString)
+        return Observable<[Content]>.create { observer in
+            do {
+                let contents = try self.mapDB.prepare(query).map { record in
+                    Content(requestKey: record[Content.Column.requestKey],
+                            topicID: record[Content.Column.topicID],
+                            referencePath: record[Content.Column.referencePath])
+                }
+                observer.onNext(contents)
+                observer.onCompleted()
+            } catch let e {
+                observer.onError(e)
             }
+            return Disposables.create()
         }
     }
 
