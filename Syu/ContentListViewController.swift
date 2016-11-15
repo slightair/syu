@@ -12,8 +12,6 @@ class ContentListViewController: NSViewController, NSOutlineViewDataSource, NSOu
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        contentListView.reloadData()
     }
 
     // MARK: - NSOutlineViewDataSource
