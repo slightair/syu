@@ -2,9 +2,9 @@ import Cocoa
 import RxSwift
 import RxCocoa
 
-class ContentListViewController: NSViewController, NSOutlineViewDataSource, NSOutlineViewDelegate {
+class ContentListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
     @IBOutlet weak var searchField: NSSearchField!
-    @IBOutlet weak var contentListView: NSOutlineView!
+    @IBOutlet weak var contentListView: NSTableView!
 
     var documentation: APIDocumentation!
     let disposeBag = DisposeBag()
@@ -30,36 +30,5 @@ class ContentListViewController: NSViewController, NSOutlineViewDataSource, NSOu
             .subscribe(onNext: { contents in
                 print(contents)
             }).addDisposableTo(disposeBag)
-    }
-
-
-    // MARK: - NSOutlineViewDataSource
-
-    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-        if item == nil {
-            return 10
-        } else {
-            return 0
-        }
-    }
-
-    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-        return 1
-    }
-
-    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-        return false
-    }
-
-    // MARK: - NSOutlineViewDelegate
-
-    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        let view = outlineView.make(withIdentifier: "ContentCell", owner: self) as? NSTableCellView
-        if let textField = view?.textField {
-            textField.stringValue = "hoge"
-            textField.sizeToFit()
-        }
-
-        return view
     }
 }
