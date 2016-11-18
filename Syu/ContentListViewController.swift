@@ -27,8 +27,12 @@ class ContentListViewController: NSViewController, NSTableViewDataSource, NSTabl
                 return self.documentation.searchContents(keyword: keyword).catchErrorJustReturn([])
             }
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { contents in
-                print(contents)
-            }).addDisposableTo(disposeBag)
+            .bindTo(contentListView.rx.items(identifier: "ContentCell")) { (index, content: Content, view) in
+                if let textField = view.textField {
+                    textField.stringValue = "hoge"
+                    textField.sizeToFit()
+                }
+            }
+            .addDisposableTo(disposeBag)
     }
 }
