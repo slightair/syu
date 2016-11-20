@@ -16,6 +16,9 @@
 		571E4F151DD6CA5100CFDEC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 571E4F131DD6CA5100CFDEC6 /* Main.storyboard */; };
 		5766AA421DDF15DD00BCB013 /* DelegateProxyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5766AA411DDF15DD00BCB013 /* DelegateProxyType.swift */; };
 		578A22301DE18A06009AC36A /* RxTableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578A222F1DE18A06009AC36A /* RxTableViewDelegateProxy.swift */; };
+		578A22391DE1ABAE009AC36A /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578A22381DE1ABAE009AC36A /* Result.framework */; };
+		578A223A1DE1ABAE009AC36A /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 578A22381DE1ABAE009AC36A /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		578A223C1DE1ABD4009AC36A /* Result.framework.dSYM in Copy Framework dSYMs */ = {isa = PBXBuildFile; fileRef = 578A223B1DE1ABD4009AC36A /* Result.framework.dSYM */; };
 		578AC5B21DD9E53100CFF249 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578AC5B01DD9E53100CFF249 /* RxCocoa.framework */; };
 		578AC5B31DD9E53100CFF249 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 578AC5B01DD9E53100CFF249 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		578AC5B41DD9E53100CFF249 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578AC5B11DD9E53100CFF249 /* RxSwift.framework */; };
@@ -44,6 +47,7 @@
 				578AC5B31DD9E53100CFF249 /* RxCocoa.framework in Embed Frameworks */,
 				57FD0C561DD860C9002CDAC4 /* SQLite.framework in Embed Frameworks */,
 				578AC5B51DD9E53100CFF249 /* RxSwift.framework in Embed Frameworks */,
+				578A223A1DE1ABAE009AC36A /* Result.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				578A223C1DE1ABD4009AC36A /* Result.framework.dSYM in Copy Framework dSYMs */,
 				578AC5B81DD9E55800CFF249 /* RxCocoa.framework.dSYM in Copy Framework dSYMs */,
 				578AC5B91DD9E55800CFF249 /* RxSwift.framework.dSYM in Copy Framework dSYMs */,
 				57FD0C5B1DD86182002CDAC4 /* SQLite.framework.dSYM in Copy Framework dSYMs */,
@@ -75,6 +80,8 @@
 		571E4F161DD6CA5100CFDEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5766AA411DDF15DD00BCB013 /* DelegateProxyType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegateProxyType.swift; sourceTree = "<group>"; };
 		578A222F1DE18A06009AC36A /* RxTableViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewDelegateProxy.swift; sourceTree = "<group>"; };
+		578A22381DE1ABAE009AC36A /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		578A223B1DE1ABD4009AC36A /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Result.framework.dSYM; path = Carthage/Build/Mac/Result.framework.dSYM; sourceTree = "<group>"; };
 		578AC5B01DD9E53100CFF249 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/Mac/RxCocoa.framework; sourceTree = "<group>"; };
 		578AC5B11DD9E53100CFF249 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/Mac/RxSwift.framework; sourceTree = "<group>"; };
 		578AC5B61DD9E55800CFF249 /* RxCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxCocoa.framework.dSYM; path = Carthage/Build/Mac/RxCocoa.framework.dSYM; sourceTree = "<group>"; };
@@ -98,6 +105,7 @@
 				578AC5B21DD9E53100CFF249 /* RxCocoa.framework in Frameworks */,
 				57FD0C551DD860C9002CDAC4 /* SQLite.framework in Frameworks */,
 				578AC5B41DD9E53100CFF249 /* RxSwift.framework in Frameworks */,
+				578A22391DE1ABAE009AC36A /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +129,7 @@
 		571E4F011DD6CA5100CFDEC6 = {
 			isa = PBXGroup;
 			children = (
+				578A223B1DE1ABD4009AC36A /* Result.framework.dSYM */,
 				571E4F0C1DD6CA5100CFDEC6 /* Syu */,
 				57FD0C581DD860CF002CDAC4 /* Frameworks */,
 				571E4F0B1DD6CA5100CFDEC6 /* Products */,
@@ -180,6 +189,7 @@
 		57FD0C581DD860CF002CDAC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				578A22381DE1ABAE009AC36A /* Result.framework */,
 				578AC5B01DD9E53100CFF249 /* RxCocoa.framework */,
 				578AC5B11DD9E53100CFF249 /* RxSwift.framework */,
 				57FD0C541DD860C9002CDAC4 /* SQLite.framework */,
