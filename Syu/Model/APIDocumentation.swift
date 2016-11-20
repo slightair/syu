@@ -14,13 +14,16 @@ class APIDocumentation {
         return resourcesPath.appendingPathComponent("external/cache.db", isDirectory: false)
     }
 
+    var indexDBPath: URL {
+        return SearchIndexCreator.indexFilePath
+    }
+
     var mapDB: Connection!
     var cacheDB: Connection!
+    var indexDB: Connection!
 
     required init(xcodePath: URL) {
         resourcesPath = xcodePath.appendingPathComponent("../SharedFrameworks/DNTDocumentationSupport.framework/Resources", isDirectory: true).standardizedFileURL
-
-        openDatabases()
     }
 
     convenience init?() {
@@ -31,9 +34,28 @@ class APIDocumentation {
         self.init(xcodePath: xcodePath)
     }
 
+    func prepare(completion: @escaping (() -> Void)) {
+        createSearchIndexIfNeeded {
+            self.openDatabases()
+            completion()
+        }
+    }
+
+    private func createSearchIndexIfNeeded(completion: @escaping (() -> Void)) {
+        if SearchIndexCreator.existsIndexDB {
+            completion()
+        } else {
+            let creator = SearchIndexCreator(resourcesPath: resourcesPath)
+            creator.createIndex { _ in
+                completion()
+            }
+        }
+    }
+
     private func openDatabases() {
         mapDB = try? Connection(mapDBPath.absoluteString, readonly: true)
         cacheDB = try? Connection(cacheDBPath.absoluteString, readonly: true)
+        indexDB = try? Connection(indexDBPath.absoluteString, readonly: true)
     }
 
     func searchContents(keyword: String) -> Observable<[Content]> {

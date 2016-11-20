@@ -11,10 +11,13 @@ class DocumentViewerViewController: NSSplitViewController {
             print("API Documentation not found")
             return
         }
-        print(documentation.resourcesPath)
 
         if let contentListViewController = contentListViewItem.viewController as? ContentListViewController {
             contentListViewController.documentation = documentation
+        }
+
+        documentation.prepare {
+            print("OK")
         }
     }
 }
