@@ -139,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				578AC5BC1DD9FC8E00CFF249 /* ViewController */,
+				578A22351DE19D52009AC36A /* Model */,
 				57F37E801DDB55EE003E3BED /* Entity */,
 				5705C4861DDC9BF500E51869 /* RxCocoaExtension */,
 				571E4F0D1DD6CA5100CFDEC6 /* AppDelegate.swift */,
@@ -149,6 +150,15 @@
 			path = Syu;
 			sourceTree = "<group>";
 		};
+		578A22351DE19D52009AC36A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57FD0C521DD85C1F002CDAC4 /* Xcode.swift */,
+				57FD0C501DD85828002CDAC4 /* APIDocumentation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		578AC5BC1DD9FC8E00CFF249 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,17 +166,15 @@
 				571E4F0F1DD6CA5100CFDEC6 /* ContentListViewController.swift */,
 				578AC5BD1DD9FCAE00CFF249 /* MainContentViewController.swift */,
 			);
-			name = ViewController;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		57F37E801DDB55EE003E3BED /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				57FD0C521DD85C1F002CDAC4 /* Xcode.swift */,
-				57FD0C501DD85828002CDAC4 /* APIDocumentation.swift */,
 				57F37E7E1DDB55DA003E3BED /* Content.swift */,
 			);
-			name = Entity;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		57FD0C581DD860CF002CDAC4 /* Frameworks */ = {
