@@ -2,7 +2,7 @@ import Cocoa
 import RxSwift
 import RxCocoa
 
-class ContentListViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+class ContentListViewController: NSViewController, NSTableViewDelegate {
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var contentListView: NSTableView!
 
@@ -16,6 +16,9 @@ class ContentListViewController: NSViewController, NSTableViewDataSource, NSTabl
     }
 
     private func setUpSubscriptions() {
+        contentListView.rx.setDelegate(self)
+            .addDisposableTo(disposeBag)
+
         searchField.rx.text.throttle(0.3, scheduler: MainScheduler.instance)
             .distinctUntilChanged { lhs, rhs in
                 lhs == rhs
@@ -27,8 +30,21 @@ class ContentListViewController: NSViewController, NSTableViewDataSource, NSTabl
                 return self.documentation.searchContents(keyword: keyword).catchErrorJustReturn([])
             }
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { contents in
-                print(contents)
-            }).addDisposableTo(disposeBag)
+            .bindTo(contentListView.rx.items)
+            .addDisposableTo(disposeBag)
+    }
+
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let view = contentListView.make(withIdentifier: "ContentCell", owner: self) as? NSTableCellView
+
+        guard let content = tableView.dataSource?.tableView!(tableView, objectValueFor: tableColumn, row: row) as? Content else {
+            return nil
+        }
+
+        if let textField = view?.textField {
+            textField.stringValue = content.referencePath
+            textField.sizeToFit()
+        }
+        return view
     }
 }
