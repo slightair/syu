@@ -67,11 +67,10 @@ class SearchIndexCreator {
         func addRecord(from line: String) throws {
             let components = line.components(separatedBy: "\0")
             let name = components[0]
-            _ = Int64(components[1])!
-            _ = components[2]
+            let type = Int64(components[1])!
+            let requestKey = components[2]
 
-//            try insertStatement.run([name, type, requestKey])
-            print(name)
+            try insertStatement.run([name, type, requestKey])
         }
 
         func addRecords(from url: URL) throws {
@@ -116,14 +115,15 @@ class SearchIndexCreator {
         let externalPath = resourcesPath.appendingPathComponent("external")
         if let contents = try? FileManager.default.contentsOfDirectory(at: externalPath, includingPropertiesForKeys: nil) {
             let indexFiles = contents.filter { $0.pathExtension == "txt" }
-            for file in indexFiles {
-                print(file)
-
-                do {
-                    try addRecords(from: file)
-                } catch let error {
-                    return completion(.failure(.databaseError(error)))
+            do {
+                try connection.transaction {
+                    for file in indexFiles {
+                        print(file)
+                        try addRecords(from: file)
+                    }
                 }
+            } catch let error {
+                return completion(.failure(.databaseError(error)))
             }
         }
         completion(.success(SearchIndexCreator.indexFilePath))
