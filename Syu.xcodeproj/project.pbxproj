@@ -135,7 +135,6 @@
 		571E4F011DD6CA5100CFDEC6 = {
 			isa = PBXGroup;
 			children = (
-				578A223B1DE1ABD4009AC36A /* Result.framework.dSYM */,
 				571E4F0C1DD6CA5100CFDEC6 /* Syu */,
 				57FD0C581DD860CF002CDAC4 /* Frameworks */,
 				571E4F0B1DD6CA5100CFDEC6 /* Products */,
@@ -202,6 +201,7 @@
 				578AC5B01DD9E53100CFF249 /* RxCocoa.framework */,
 				578AC5B11DD9E53100CFF249 /* RxSwift.framework */,
 				57FD0C541DD860C9002CDAC4 /* SQLite.framework */,
+				578A223B1DE1ABD4009AC36A /* Result.framework.dSYM */,
 				578AC5B61DD9E55800CFF249 /* RxCocoa.framework.dSYM */,
 				578AC5B71DD9E55800CFF249 /* RxSwift.framework.dSYM */,
 				57FD0C5A1DD86182002CDAC4 /* SQLite.framework.dSYM */,
