@@ -58,19 +58,21 @@ class APIDocumentation {
         indexDB = try? Connection(indexDBPath.absoluteString, readonly: true)
     }
 
-    func searchContents(keyword: String) -> Observable<[Content]> {
-        let query = Table("map").select(Content.Column.requestKey, Content.Column.topicID, Content.Column.referencePath)
-            .filter(Content.Column.referencePath.glob("\(keyword)*"))
+    func search(keyword: String) -> Observable<[SearchIndex]> {
+        let query = Table("search_indexes").select(SearchIndex.Column.name,
+                                                   SearchIndex.Column.type,
+                                                   SearchIndex.Column.requestKey)
+            .filter(SearchIndex.Column.name.glob("\(keyword)*"))
             .limit(30)
 
-        return Observable<[Content]>.create { observer in
+        return Observable<[SearchIndex]>.create { observer in
             do {
-                let contents = try self.mapDB.prepare(query).map { record in
-                    Content(requestKey: record[Content.Column.requestKey],
-                            topicID: record[Content.Column.topicID],
-                            referencePath: record[Content.Column.referencePath])
+                let indexes = try self.indexDB.prepare(query).map { record in
+                    SearchIndex(name: record[SearchIndex.Column.name],
+                                type: record[SearchIndex.Column.type],
+                                requestKey: record[SearchIndex.Column.requestKey])
                 }
-                observer.onNext(contents)
+                observer.onNext(indexes)
                 observer.onCompleted()
             } catch let e {
                 observer.onError(e)

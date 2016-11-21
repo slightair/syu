@@ -23,11 +23,11 @@ class ContentListViewController: NSViewController, NSTableViewDelegate {
             .distinctUntilChanged { lhs, rhs in
                 lhs == rhs
             }
-            .flatMapLatest { keyword -> Observable<[Content]> in
+            .flatMapLatest { keyword -> Observable<[SearchIndex]> in
                 guard let keyword = keyword, !keyword.isEmpty else {
                     return .just([])
                 }
-                return self.documentation.searchContents(keyword: keyword).catchErrorJustReturn([])
+                return self.documentation.search(keyword: keyword).catchErrorJustReturn([])
             }
             .observeOn(MainScheduler.instance)
             .bindTo(contentListView.rx.items)
@@ -37,12 +37,12 @@ class ContentListViewController: NSViewController, NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let view = contentListView.make(withIdentifier: "ContentCell", owner: self) as? NSTableCellView
 
-        guard let content = tableView.dataSource?.tableView!(tableView, objectValueFor: tableColumn, row: row) as? Content else {
+        guard let index = tableView.dataSource?.tableView!(tableView, objectValueFor: tableColumn, row: row) as? SearchIndex else {
             return nil
         }
 
         if let textField = view?.textField {
-            textField.stringValue = content.referencePath
+            textField.stringValue = index.name
             textField.sizeToFit()
         }
         return view
