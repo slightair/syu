@@ -81,6 +81,18 @@ class APIDocumentation {
         }
     }
 
+    func responseData(from key: String) -> String? {
+        let requestKey = Expression<String>("request_key")
+        let responseData = Expression<SQLite.Blob>("response_data")
+
+        let query = Table("response").select(responseData).filter(requestKey == key)
+
+        if let data = try? cacheDB.pluck(query)![responseData] {
+            return String(data: decode(from: Data(bytes: data.bytes)), encoding: .utf8)
+        }
+        return nil
+    }
+
     private func decode(from encodedData: Data) -> Data {
         let result = encodedData.withUnsafeBytes { (sourceBuffer: UnsafePointer<UInt8>) -> Data in
             let sourceBufferSize = encodedData.count

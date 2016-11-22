@@ -47,4 +47,16 @@ class ContentListViewController: NSViewController, NSTableViewDelegate {
         }
         return view
     }
+
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if let tableView = notification.object as? NSTableView {
+            guard let index = tableView.dataSource?.tableView!(tableView, objectValueFor: nil, row: tableView.selectedRow) as? SearchIndex else {
+                return
+            }
+
+            if let data = documentation.responseData(from: index.requestKey) {
+                print(data)
+            }
+        }
+    }
 }
