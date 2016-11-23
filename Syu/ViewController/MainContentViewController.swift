@@ -11,7 +11,7 @@ class MainContentViewController: NSViewController {
         }
     }
 
-    let contentBaseURL = Bundle.main.bundleURL
+    let contentBaseURL = Bundle.main.resourceURL!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,27 +1,45 @@
-<p>{{syntaxType}}</p>
-<h1>{{name}}</h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="document.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container">
+    <h1>{{name}} <small>{{syntaxType}}</small></h1>
 
-<div>
-    {{# abstract }}
-        <p>{{abstract}}</p>
-    {{/ abstract}}
-    {{# overview }}
-        <h2>Overview</h2>
-        <p>{{overview}}</p>
-    {{/ overview }}
-    {{^ overview  }}{{^ abstract }}
-        <p>No overview available.</p>
-    {{/ abstract }}{{/ overview }}
-</div>
-
-{{# sections }}
-<div>
-    <h3>{{title}}</h3>
-    {{# symbols }}
     <div>
-        <h4>{{title}}</h4>
-        <p>{{abstract}}</p>
+        {{# abstract }}
+            <p class="lead">{{abstract}}</p>
+        {{/ abstract}}
+        {{# overview }}
+            <h2>Overview</h2>
+            <p>{{overview}}</p>
+        {{/ overview }}
+        {{^ overview  }}{{^ abstract }}
+            <p class="lead">No overview available.</p>
+        {{/ abstract }}{{/ overview }}
     </div>
-    {{/ symbols }}
+
+    {{# sections.count }}
+    <div>
+        <h2>Symbols</h2>
+    {{/ sections.count }}
+        {{# sections }}
+        <div class="section">
+            <h3>{{title}}</h3>
+            {{# symbols }}
+            <div class="symbol">
+                <h4>{{name}}</h4>
+                <p>{{abstract}}</p>
+            </div>
+            {{/ symbols }}
+        </div>
+        {{/ sections }}
+    {{# sections.count }}
+    </div>
+    {{/ sections.count }}
 </div>
-{{/ sections }}
+</body>
+</html>

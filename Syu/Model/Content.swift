@@ -33,18 +33,20 @@ struct Content {
     struct Section: Decodable, MustacheBoxable {
         struct Symbol: Decodable, MustacheBoxable {
             let title: String
+            let name: String?
             let abstract: String?
 
             static func decode(_ e: Extractor) throws -> Symbol {
                 return try Symbol(
                     title: e <| ["t", "x"],
+                    name: e <|? "n",
                     abstract: e <|? ["a", "x"]
                 )
             }
 
             var mustacheBox: MustacheBox {
                 return Box([
-                    "title": title,
+                    "name": name ?? title,
                     "abstract": abstract ?? ""
                 ])
             }
