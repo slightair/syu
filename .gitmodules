@@ -7,3 +7,9 @@
 [submodule "Carthage/Checkouts/Result"]
 	path = Carthage/Checkouts/Result
 	url = https://github.com/antitypical/Result.git
+[submodule "Carthage/Checkouts/GRMustache.swift"]
+	path = Carthage/Checkouts/GRMustache.swift
+	url = https://github.com/groue/GRMustache.swift.git
+[submodule "Carthage/Checkouts/Himotoki"]
+	path = Carthage/Checkouts/Himotoki
+	url = https://github.com/ikesyo/Himotoki.git

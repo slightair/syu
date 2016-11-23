@@ -1,4 +1,6 @@
 github "stephencelis/SQLite.swift" ~> 0.11.0
 github "ReactiveX/RxSwift" ~> 3.0
 github "antitypical/Result" ~> 3.0.0
+github "groue/GRMustache.swift" ~> 2.0.0
+github "ikesyo/Himotoki" ~> 3.0
 

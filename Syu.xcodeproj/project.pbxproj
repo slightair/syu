@@ -30,6 +30,12 @@
 		578AC5BB1DD9E79600CFF249 /* DocumentViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AC5BA1DD9E79600CFF249 /* DocumentViewerViewController.swift */; };
 		578AC5BE1DD9FCAE00CFF249 /* MainContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AC5BD1DD9FCAE00CFF249 /* MainContentViewController.swift */; };
 		579307D31DE53F0200A1F24B /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579307D21DE53F0200A1F24B /* ResponseData.swift */; };
+		579307D51DE56B0100A1F24B /* Mustache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579307D41DE56B0100A1F24B /* Mustache.framework */; };
+		579307D61DE56B0100A1F24B /* Mustache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 579307D41DE56B0100A1F24B /* Mustache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		579307D81DE56B1200A1F24B /* Mustache.framework.dSYM in Copy Framework dSYMs */ = {isa = PBXBuildFile; fileRef = 579307D71DE56B1200A1F24B /* Mustache.framework.dSYM */; };
+		579307DA1DE56C1200A1F24B /* Himotoki.framework.dSYM in Copy Framework dSYMs */ = {isa = PBXBuildFile; fileRef = 579307D91DE56C1200A1F24B /* Himotoki.framework.dSYM */; };
+		579307DC1DE56C2400A1F24B /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579307DB1DE56C2400A1F24B /* Himotoki.framework */; };
+		579307DD1DE56C2400A1F24B /* Himotoki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 579307DB1DE56C2400A1F24B /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		57AB6D291DDD1EB4003F005B /* RxTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB6D281DDD1EB4003F005B /* RxTableViewDataSourceProxy.swift */; };
 		57AB6D2B1DDD2480003F005B /* RxTableViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB6D2A1DDD2480003F005B /* RxTableViewDataSourceType.swift */; };
 		57EAF6321DE1B33100D92764 /* CreateSearchIndexResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EAF6311DE1B33100D92764 /* CreateSearchIndexResult.swift */; };
@@ -48,7 +54,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				579307D61DE56B0100A1F24B /* Mustache.framework in Embed Frameworks */,
 				578AC5B31DD9E53100CFF249 /* RxCocoa.framework in Embed Frameworks */,
+				579307DD1DE56C2400A1F24B /* Himotoki.framework in Embed Frameworks */,
 				57FD0C561DD860C9002CDAC4 /* SQLite.framework in Embed Frameworks */,
 				578AC5B51DD9E53100CFF249 /* RxSwift.framework in Embed Frameworks */,
 				578A223A1DE1ABAE009AC36A /* Result.framework in Embed Frameworks */,
@@ -62,6 +70,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				579307DA1DE56C1200A1F24B /* Himotoki.framework.dSYM in Copy Framework dSYMs */,
+				579307D81DE56B1200A1F24B /* Mustache.framework.dSYM in Copy Framework dSYMs */,
 				578A223C1DE1ABD4009AC36A /* Result.framework.dSYM in Copy Framework dSYMs */,
 				578AC5B81DD9E55800CFF249 /* RxCocoa.framework.dSYM in Copy Framework dSYMs */,
 				578AC5B91DD9E55800CFF249 /* RxSwift.framework.dSYM in Copy Framework dSYMs */,
@@ -95,6 +105,10 @@
 		578AC5BA1DD9E79600CFF249 /* DocumentViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewerViewController.swift; sourceTree = "<group>"; };
 		578AC5BD1DD9FCAE00CFF249 /* MainContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContentViewController.swift; sourceTree = "<group>"; };
 		579307D21DE53F0200A1F24B /* ResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
+		579307D41DE56B0100A1F24B /* Mustache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mustache.framework; path = Carthage/Build/Mac/Mustache.framework; sourceTree = "<group>"; };
+		579307D71DE56B1200A1F24B /* Mustache.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Mustache.framework.dSYM; path = Carthage/Build/Mac/Mustache.framework.dSYM; sourceTree = "<group>"; };
+		579307D91DE56C1200A1F24B /* Himotoki.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Himotoki.framework.dSYM; path = Carthage/Build/Mac/Himotoki.framework.dSYM; sourceTree = "<group>"; };
+		579307DB1DE56C2400A1F24B /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
 		57AB6D281DDD1EB4003F005B /* RxTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		57AB6D2A1DDD2480003F005B /* RxTableViewDataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSourceType.swift; sourceTree = "<group>"; };
 		57EAF6311DE1B33100D92764 /* CreateSearchIndexResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSearchIndexResult.swift; sourceTree = "<group>"; };
@@ -110,7 +124,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579307D51DE56B0100A1F24B /* Mustache.framework in Frameworks */,
 				578AC5B21DD9E53100CFF249 /* RxCocoa.framework in Frameworks */,
+				579307DC1DE56C2400A1F24B /* Himotoki.framework in Frameworks */,
 				57FD0C551DD860C9002CDAC4 /* SQLite.framework in Frameworks */,
 				578AC5B41DD9E53100CFF249 /* RxSwift.framework in Frameworks */,
 				578A22391DE1ABAE009AC36A /* Result.framework in Frameworks */,
@@ -204,10 +220,14 @@
 				578AC5B01DD9E53100CFF249 /* RxCocoa.framework */,
 				578AC5B11DD9E53100CFF249 /* RxSwift.framework */,
 				57FD0C541DD860C9002CDAC4 /* SQLite.framework */,
+				579307D41DE56B0100A1F24B /* Mustache.framework */,
+				579307DB1DE56C2400A1F24B /* Himotoki.framework */,
 				578A223B1DE1ABD4009AC36A /* Result.framework.dSYM */,
 				578AC5B61DD9E55800CFF249 /* RxCocoa.framework.dSYM */,
 				578AC5B71DD9E55800CFF249 /* RxSwift.framework.dSYM */,
 				57FD0C5A1DD86182002CDAC4 /* SQLite.framework.dSYM */,
+				579307D71DE56B1200A1F24B /* Mustache.framework.dSYM */,
+				579307D91DE56C1200A1F24B /* Himotoki.framework.dSYM */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
