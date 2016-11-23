@@ -1,9 +1,15 @@
 import Foundation
 import Compression
 import SQLite
+import Mustache
+import Himotoki
 
 struct ResponseData {
     fileprivate let jsonObject: [String: Any]
+
+    var content: Content? {
+        return try? decodeValue(jsonObject)
+    }
 
     init(data: Data) {
         if let object = try? JSONSerialization.jsonObject(with: data), let jsonObject = object as? [String: Any] {

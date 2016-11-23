@@ -1,10 +1,11 @@
 import Cocoa
 import WebKit
+import Mustache
 
 class MainContentViewController: NSViewController {
     @IBOutlet weak var webView: WebView!
 
-    var content: ResponseData? {
+    var content: Content? {
         didSet {
             updateContentView()
         }
@@ -17,6 +18,25 @@ class MainContentViewController: NSViewController {
     }
 
     func updateContentView() {
-        webView.mainFrame.loadHTMLString(content?.description, baseURL: contentBaseURL)
+        webView.mainFrame.loadHTMLString(makeHTMLString(), baseURL: contentBaseURL)
+    }
+
+    func makeHTMLString() -> String {
+        guard let content = content else {
+            return "<h1>No content</h1>"
+        }
+
+        do {
+            let template = try Template(named: "document")
+            return try template.render(content)
+        } catch let error as MustacheError {
+            let template = try! Template(string: "<h1>Rendering error</h1><p>{{description}}</p>")
+            let rendering = try? template.render([
+                "description": error.description,
+            ])
+            return rendering ?? "<h1>Rendering error</h1>"
+        } catch {
+            return "<h1>Unknown error</h1>"
+        }
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import SQLite
 
-struct Content {
+struct Map {
     struct Column {
         static let requestKey = Expression<String>("request_key")
         static let topicID = Expression<Int64>("topic_id")

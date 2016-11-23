@@ -40,6 +40,6 @@ class DocumentViewerViewController: NSSplitViewController, ContentListViewContro
     // MARK: ContentListViewControllerDelegate
 
     func didSelectContent(requestKey: String) {
-        mainContentViewController.content = documentation.responseData(of: requestKey)
+        mainContentViewController.content = documentation.responseData(of: requestKey)?.content
     }
 }
