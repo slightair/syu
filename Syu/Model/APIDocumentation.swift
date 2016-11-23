@@ -80,7 +80,7 @@ class APIDocumentation {
         }
     }
 
-    func responseData(from key: String) -> ResponseData? {
+    func responseData(of key: String) -> ResponseData? {
         let requestKey = Expression<String>("request_key")
         let responseData = Expression<ResponseData>("response_data")
 

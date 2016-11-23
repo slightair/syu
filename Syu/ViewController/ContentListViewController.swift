@@ -2,9 +2,15 @@ import Cocoa
 import RxSwift
 import RxCocoa
 
+protocol ContentListViewControllerDelegate: class {
+    func didSelectContent(requestKey: String)
+}
+
 class ContentListViewController: NSViewController, NSTableViewDelegate {
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var contentListView: NSTableView!
+
+    weak var delegate: ContentListViewControllerDelegate?
 
     var documentation: APIDocumentation!
     let disposeBag = DisposeBag()
@@ -34,6 +40,8 @@ class ContentListViewController: NSViewController, NSTableViewDelegate {
             .addDisposableTo(disposeBag)
     }
 
+    // MARK: NSTableViewDelegate
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let view = contentListView.make(withIdentifier: "ContentCell", owner: self) as? NSTableCellView
 
@@ -53,10 +61,7 @@ class ContentListViewController: NSViewController, NSTableViewDelegate {
             guard let index = tableView.dataSource?.tableView!(tableView, objectValueFor: nil, row: tableView.selectedRow) as? SearchIndex else {
                 return
             }
-
-            if let data = documentation.responseData(from: index.requestKey) {
-                print(data)
-            }
+            delegate?.didSelectContent(requestKey: index.requestKey)
         }
     }
 }

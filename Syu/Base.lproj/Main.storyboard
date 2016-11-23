@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11760"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11760"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -837,7 +838,28 @@
                     <view key="view" id="9dq-RM-eDR">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="j1g-de-w0Y">
+                                <rect key="frame" x="0.0" y="0.0" width="560" height="600"/>
+                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
+                                    <nil key="identifier"/>
+                                </webPreferences>
+                                <connections>
+                                    <outlet property="UIDelegate" destination="jgx-vc-k3T" id="3sO-aL-RSk"/>
+                                    <outlet property="resourceLoadDelegate" destination="jgx-vc-k3T" id="6of-CQ-UK4"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="j1g-de-w0Y" secondAttribute="bottom" id="jun-ng-ukS"/>
+                            <constraint firstItem="j1g-de-w0Y" firstAttribute="top" secondItem="9dq-RM-eDR" secondAttribute="top" id="n3s-Tk-FTU"/>
+                            <constraint firstAttribute="trailing" secondItem="j1g-de-w0Y" secondAttribute="trailing" id="w0T-MA-x7I"/>
+                            <constraint firstItem="j1g-de-w0Y" firstAttribute="leading" secondItem="9dq-RM-eDR" secondAttribute="leading" id="yRg-Gb-IE1"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="j1g-de-w0Y" id="nJ1-Qo-S4z"/>
+                    </connections>
                 </viewController>
                 <customObject id="YMl-Ge-Tt1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

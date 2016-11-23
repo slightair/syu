@@ -1,18 +1,22 @@
-//
-//  MainContentViewController.swift
-//  Syu
-//
-//  Created by slightair on 2016/11/14.
-//  Copyright © 2016 slightair. All rights reserved.
-//
-
 import Cocoa
+import WebKit
 
 class MainContentViewController: NSViewController {
+    @IBOutlet weak var webView: WebView!
+
+    var content: ResponseData? {
+        didSet {
+            updateContentView()
+        }
+    }
+
+    let contentBaseURL = Bundle.main.bundleURL
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
-    
+
+    func updateContentView() {
+        webView.mainFrame.loadHTMLString(content?.description, baseURL: contentBaseURL)
+    }
 }
