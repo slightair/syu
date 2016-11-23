@@ -1,5 +1,4 @@
 import Foundation
-import Compression
 import SQLite
 import RxSwift
 
@@ -81,28 +80,16 @@ class APIDocumentation {
         }
     }
 
-    func responseData(from key: String) -> String? {
+    func responseData(from key: String) -> ResponseData? {
         let requestKey = Expression<String>("request_key")
-        let responseData = Expression<SQLite.Blob>("response_data")
+        let responseData = Expression<ResponseData>("response_data")
 
         let query = Table("response").select(responseData).filter(requestKey == key)
 
-        if let data = try? cacheDB.pluck(query)![responseData] {
-            return String(data: decode(from: Data(bytes: data.bytes)), encoding: .utf8)
+        if let row = try? cacheDB.pluck(query), let record = row {
+            return record[responseData]
+        } else {
+            return nil
         }
-        return nil
-    }
-
-    private func decode(from encodedData: Data) -> Data {
-        let result = encodedData.withUnsafeBytes { (sourceBuffer: UnsafePointer<UInt8>) -> Data in
-            let sourceBufferSize = encodedData.count
-            let destBufferSize = 1048576
-            let destBuffer = UnsafeMutablePointer<UInt8>.allocate(capacity: destBufferSize)
-            let size = compression_decode_buffer(destBuffer, destBufferSize, sourceBuffer, sourceBufferSize, nil, COMPRESSION_LZFSE)
-
-            return Data(bytesNoCopy: destBuffer, count: size, deallocator: .free)
-        }
-
-        return result
     }
 }

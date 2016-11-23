@@ -29,6 +29,7 @@
 		578AC5B91DD9E55800CFF249 /* RxSwift.framework.dSYM in Copy Framework dSYMs */ = {isa = PBXBuildFile; fileRef = 578AC5B71DD9E55800CFF249 /* RxSwift.framework.dSYM */; };
 		578AC5BB1DD9E79600CFF249 /* DocumentViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AC5BA1DD9E79600CFF249 /* DocumentViewerViewController.swift */; };
 		578AC5BE1DD9FCAE00CFF249 /* MainContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578AC5BD1DD9FCAE00CFF249 /* MainContentViewController.swift */; };
+		579307D31DE53F0200A1F24B /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579307D21DE53F0200A1F24B /* ResponseData.swift */; };
 		57AB6D291DDD1EB4003F005B /* RxTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB6D281DDD1EB4003F005B /* RxTableViewDataSourceProxy.swift */; };
 		57AB6D2B1DDD2480003F005B /* RxTableViewDataSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB6D2A1DDD2480003F005B /* RxTableViewDataSourceType.swift */; };
 		57EAF6321DE1B33100D92764 /* CreateSearchIndexResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EAF6311DE1B33100D92764 /* CreateSearchIndexResult.swift */; };
@@ -93,6 +94,7 @@
 		578AC5B71DD9E55800CFF249 /* RxSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxSwift.framework.dSYM; path = Carthage/Build/Mac/RxSwift.framework.dSYM; sourceTree = "<group>"; };
 		578AC5BA1DD9E79600CFF249 /* DocumentViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentViewerViewController.swift; sourceTree = "<group>"; };
 		578AC5BD1DD9FCAE00CFF249 /* MainContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainContentViewController.swift; sourceTree = "<group>"; };
+		579307D21DE53F0200A1F24B /* ResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
 		57AB6D281DDD1EB4003F005B /* RxTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		57AB6D2A1DDD2480003F005B /* RxTableViewDataSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewDataSourceType.swift; sourceTree = "<group>"; };
 		57EAF6311DE1B33100D92764 /* CreateSearchIndexResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSearchIndexResult.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				57FD0C501DD85828002CDAC4 /* APIDocumentation.swift */,
 				578A22361DE19DEC009AC36A /* SearchIndexCreator.swift */,
 				57EAF6311DE1B33100D92764 /* CreateSearchIndexResult.swift */,
+				579307D21DE53F0200A1F24B /* ResponseData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				5766AA421DDF15DD00BCB013 /* DelegateProxyType.swift in Sources */,
 				5705C48C1DDCAAD000E51869 /* RxCocoa.swift in Sources */,
 				571E4F101DD6CA5100CFDEC6 /* ContentListViewController.swift in Sources */,
+				579307D31DE53F0200A1F24B /* ResponseData.swift in Sources */,
 				578AC5BE1DD9FCAE00CFF249 /* MainContentViewController.swift in Sources */,
 				578A22371DE19DEC009AC36A /* SearchIndexCreator.swift in Sources */,
 				5705C4881DDC9C5700E51869 /* NSTableView+Rx.swift in Sources */,
