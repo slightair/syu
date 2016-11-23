@@ -27,7 +27,21 @@ class MainContentViewController: NSViewController {
         }
 
         do {
+            let removeTags = Filter { (text: String?) -> String? in
+                guard let text = text else {
+                    return nil
+                }
+                guard let regexp = try? NSRegularExpression(pattern: "<.+?>", options: []) else {
+                    return nil
+                }
+                let result = regexp.stringByReplacingMatches(in: text, options: [], range: NSMakeRange(0, text.utf16.count), withTemplate: "")
+
+                return result
+            }
+
             let template = try Template(named: "document")
+            template.register(removeTags, forKey: "removeTags")
+
             return try template.render(content)
         } catch let error as MustacheError {
             let template = try! Template(string: "<h1>Rendering error</h1><p>{{description}}</p>")

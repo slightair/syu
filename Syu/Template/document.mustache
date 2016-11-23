@@ -7,15 +7,15 @@
 </head>
 <body>
 <div class="container">
-    <h1>{{name}} <small>{{syntaxType}}</small></h1>
+    <h1>{{ name }} <small>{{ syntaxType }}</small></h1>
 
     <div>
         {{# abstract }}
-            <p class="lead">{{abstract}}</p>
+            <p class="lead">{{ removeTags(abstract) }}</p>
         {{/ abstract}}
         {{# overview }}
             <h2>Overview</h2>
-            <p>{{overview}}</p>
+            <p>{{ removeTags(overview) }}</p>
         {{/ overview }}
         {{^ overview  }}{{^ abstract }}
             <p class="lead">No overview available.</p>
@@ -28,11 +28,11 @@
     {{/ sections.count }}
         {{# sections }}
         <div class="section">
-            <h3>{{title}}</h3>
+            <h3>{{ title }}</h3>
             {{# symbols }}
             <div class="symbol">
-                <h4>{{name}}</h4>
-                <p>{{abstract}}</p>
+                <h4>{{ removeTags(name) }}</h4>
+                <p>{{ removeTags(abstract) }}</p>
             </div>
             {{/ symbols }}
         </div>
