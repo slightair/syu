@@ -42,11 +42,11 @@ class APIDocumentation {
     }
 
     private func createSearchIndexIfNeeded(completion: @escaping (() -> Void)) {
-        if SearchIndexCreator.existsIndexDB {
+        if SearchIndexCreator.existsIndexFile {
             completion()
         } else {
             let creator = SearchIndexCreator(resourcesPath: resourcesPath)
-            creator.createIndex { _ in
+            creator.createSearchIndex { _ in
                 completion()
             }
         }
