@@ -34,6 +34,18 @@ class SearchIndexCreator {
             return
         }
 
+        let swiftDocumentKeys: Set<String>
+        do {
+            let path = resourcesPath.appendingPathComponent("external/map.db", isDirectory: false)
+            let connection = try Connection(path.absoluteString, readonly: true)
+            let query = Table("map").select(Map.Column.requestKey)
+                .filter(Map.Column.sourceLanguage == 0)
+            swiftDocumentKeys = Set(try connection.prepare(query).map { $0[Map.Column.requestKey] })
+        } catch let error {
+            completion(.failure(.databaseError(error)))
+            return
+        }
+
         let connection: Connection
         let indexDBPathString = SearchIndexCreator.indexFilePath.absoluteString
         do {
@@ -77,7 +89,9 @@ class SearchIndexCreator {
                             let type = Int64(components[1])!
                             let requestKey = components[2]
 
-                            try insertStatement.run([name, type, requestKey])
+                            if swiftDocumentKeys.contains(requestKey) {
+                                try insertStatement.run([name, type, requestKey])
+                            }
                         }
                     }
                 }
