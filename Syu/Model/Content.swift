@@ -78,7 +78,11 @@ struct Content {
 }
 
 extension Content: Decodable {
-    static let SyntaxTypeTransformer = Transformer<String, SyntaxType> { string throws -> SyntaxType in
+    static let SyntaxTypeTransformer = Transformer<String?, SyntaxType> { string throws -> SyntaxType in
+        guard let string = string else {
+            return .unknown
+        }
+
         if let type = SyntaxType(rawValue: string) {
             return type
         } else {
@@ -89,7 +93,7 @@ extension Content: Decodable {
 
     static func decode(_ e: Extractor) throws -> Content {
         return try Content(
-            syntaxType: SyntaxTypeTransformer.apply(e <| "k"),
+            syntaxType: SyntaxTypeTransformer.apply(e <|? "k"),
             name: e <| ["t", "x"],
             abstract: e <|? ["a", "x"],
             overview: e <|? ["o", "x"],
