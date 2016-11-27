@@ -61,7 +61,7 @@ class APIDocumentation {
         let query = Table("search_indexes").select(SearchIndex.Column.name,
                                                    SearchIndex.Column.type,
                                                    SearchIndex.Column.requestKey)
-            .filter(SearchIndex.Column.name.glob("\(keyword)*"))
+            .filter(SearchIndex.Column.name.like("\(keyword)%"))
             .limit(30)
 
         return Observable<[SearchIndex]>.create { observer in
