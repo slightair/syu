@@ -50,7 +50,7 @@ class ContentListViewController: NSViewController, NSTableViewDelegate {
         }
 
         if let textField = view?.textField {
-            textField.stringValue = index.name
+            textField.stringValue = "\(index.type): \(index.name)"
             textField.sizeToFit()
         }
         return view

@@ -4,23 +4,47 @@ import Mustache
 
 struct Content {
     enum SyntaxType: String, CustomStringConvertible, MustacheBoxable {
-        case `class` = "cl"
-        case function = "func"
-        case instanceMethod = "instm"
+        case globalVariable = "data"
         case typeAlias = "tdef"
+        case function = "func"
+        case enumeration = "enum"
+        case enumerationCase = "enumelt"
+        case structure = "struct"
+        case `class` = "cl"
+        case `protocol` = "intf"
+        case instanceMethod = "instm"
+        case instanceProperty = "instp"
+        case typeMethod = "clm"
+        case typeProperty = "structdata"
         case unknown
 
         var description: String {
             switch self {
-            case .class:
-                return "Class"
-            case .function:
-                return "Function"
-            case .instanceMethod:
-                return "Instance Method"
+            case .globalVariable:
+                return "Global Variable"
             case .typeAlias:
                 return "Type Alias"
-            default:
+            case .function:
+                return "Function"
+            case .enumeration:
+                return "Enumeration"
+            case .enumerationCase:
+                return "Enumeration Case"
+            case .structure:
+                return "Structure"
+            case .class:
+                return "Class"
+            case .protocol:
+                return "Protocol"
+            case .instanceMethod:
+                return "Instance Method"
+            case .instanceProperty:
+                return "Instance Property"
+            case .typeMethod:
+                return "Type Method"
+            case .typeProperty:
+                return "Type Property"
+            case .unknown:
                 return "Unknown"
             }
         }
