@@ -1,7 +1,6 @@
 import Foundation
 import Compression
 import SQLite
-import Mustache
 import Himotoki
 
 struct ResponseData {
